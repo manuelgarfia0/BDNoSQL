@@ -1,6 +1,6 @@
 body {
-  background: #f5f6fa;
-  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #e0e7ff 0%, #f5f6fa 100%);
+  font-family: 'Segoe UI', Arial, sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,41 +8,84 @@ body {
   min-height: 100vh;
 }
 
+h2 {
+  margin-top: 2.5em;
+  color: #22223b;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
 form {
   background: #fff;
-  padding: 2em 2.5em;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  margin-top: 2em;
+  padding: 2.5em 2.5em 2em 2.5em;
+  border-radius: 14px;
+  box-shadow: 0 6px 32px rgba(0,0,0,0.10), 0 1.5px 4px rgba(0,0,0,0.08);
+  margin-top: 1.5em;
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  gap: 1.2em;
+  min-width: 320px;
+  max-width: 350px;
 }
 
 input {
-  padding: 0.7em;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 0.9em 1em;
+  border: 1.5px solid #c7d2fe;
+  border-radius: 6px;
   font-size: 1em;
+  background: #f8fafc;
+  transition: border 0.2s;
+  outline: none;
+}
+
+input:focus {
+  border: 1.5px solid #6366f1;
+  background: #fff;
 }
 
 button {
-  background: #007bff;
+  background: linear-gradient(90deg, #6366f1 0%, #2563eb 100%);
   color: #fff;
   border: none;
-  padding: 0.7em;
-  border-radius: 4px;
+  padding: 0.9em;
+  border-radius: 6px;
   font-size: 1em;
+  font-weight: 500;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(99,102,241,0.08);
 }
 
 button:hover {
-  background: #0056b3;
+  background: linear-gradient(90deg, #2563eb 0%, #6366f1 100%);
+  box-shadow: 0 4px 16px rgba(99,102,241,0.13);
 }
 
 #msg {
   margin-top: 1em;
   color: #d90429;
   font-weight: bold;
+  text-align: center;
+}
+
+a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: #6366f1;
+  text-decoration: underline;
+}
+
+@media (max-width: 400px) {
+  form {
+    min-width: 90vw;
+    padding: 1.2em;
+  }
+  h2 {
+    font-size: 1.2em;
+  }
 }
