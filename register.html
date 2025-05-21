@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WEB</title>
+    <title>Registrarse</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h2>Login</h2>
-  <form id="loginForm">
+  <h2>Registro</h2>
+  <form id="registerForm">
     <input type="email" id="email" placeholder="Email" required /><br />
     <input type="password" id="password" placeholder="Contraseña" required /><br />
-    <button type="submit">Login</button>
+    <button type="submit">Registrarse</button>
   </form>
   <p id="msg" style="color:red;"></p>
-  <p><a href="register.html">¿No tienes cuenta? Regístrate</a></p>
+  <p><a href="index.html">¿Ya tienes cuenta? Inicia sesión</a></p>
 
   <script type="module">
     import { auth } from './firebase.js';
-    import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-auth.js";
+    import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-auth.js";
 
-    const form = document.getElementById('loginForm');
+    const form = document.getElementById('registerForm');
     const msg = document.getElementById('msg');
 
     form.addEventListener('submit', (e) => {
@@ -28,12 +28,12 @@
       const email = form.email.value;
       const password = form.password.value;
 
-      signInWithEmailAndPassword(auth, email, password)
+      createUserWithEmailAndPassword(auth, email, password)
         .then(() => {
-          window.location.href = 'welcome.html';
+          window.location.href = 'index.html';
         })
         .catch(error => {
-          msg.textContent = "El usuario o la contraseña son incorrectos.";
+          msg.textContent = "Error al registrar. Puede que el usuario ya exista.";
         });
     });
   </script>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2 id="welcome">Bienvenido</h2>
+  <button id="logout">Cerrar sesión</button>
+
+  <script type="module">
+    import { auth } from './firebase.js';
+    import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-auth.js";
+
+    const welcome = document.getElementById('welcome');
+    const logout = document.getElementById('logout');
+
+    onAuthStateChanged(auth, user => {
+      if (user) {
+        welcome.textContent = `Bienvenido, ${user.email}`;
+      } else {
+        window.location.href = 'index.html';
+      }
+    });
+
+    logout.addEventListener('click', () => {
+      signOut(auth).then(() => {
+        window.location.href = 'index.html';
+      });
+    });
+  </script>
+</body>
+</html>
